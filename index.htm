@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FetchBook: A Reponsive Jquery Facebook Gallery Plugin </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="Display Images from your Facebook Page in a nice Gallery using jQuery and Facebook API">
+        <meta name="keywords" content="jquery, facebook, facebook API, Facebook Gallery, jquery facebook gallery">
+        <meta name="author" content="Forteme">
+        <link href="favicon.png" rel="shortcut icon">
+        <link rel="stylesheet" href="css/fetchbook.css" />
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+    </head>
+    <body>
+        <div id="mainContainer">
+        </div>
+        <div style="text-align: center">
+            <a href="https://github.com/abhimansta/fetchbook/">View Source on Github</a><br>
+            <strong>Author:</strong> <a href="https://github.com/abhimansta" target="_blank">Abhishek Mittal</a>
+        </div>
+    </body>
+    <script src = "js/jquery.js"></script>
+    <script src = "js/masonry.pkgd.min.js"></script>
+    <script src = "js/fetchbook.js"></script>
+    <script>
+        var appId = '296257484143696';
+        var pageId="681600118668694";
+        var excludedAlbums = ["681601632001876","681600575335315"];
+        var accessToken = '296257484143696|5fc04aadcc6fc9dd97a8d6f476148e81';   
+
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : appId,
+                xfbml      : true,
+                version    : 'v2.8'
+            });
+            FB.AppEvents.logPageView();
+            $("#mainContainer").fbGallery({
+                accessToken: accessToken,
+                excludedAlbums: excludedAlbums,
+                pageId: pageId
+            });
+       };
+       (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <style>
+        body,html,#mainContainer{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+</html>
